@@ -65,10 +65,10 @@ body {
     border-color: #2dd4bf; 
 }
 
-/* SEARCH SECTION TWEAKS */
+/* SEARCH SECTION */
 .search-bar-area {
     background-color: #f8fafc; /* Very subtle background contrast */
-    padding: 40px 0;
+    padding: 40px 0 30px 0;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -127,6 +127,41 @@ body {
     background-color: #ffffff;
     box-shadow: 0 4px 5px 1px rgba(0, 0, 0, 0.35);
 }
+
+/* Container for the tags under the search bar */
+
+.quick-tags {
+    margin-top: 25px; /* Space between search bar and pills */
+    display: flex;
+    flex-wrap: wrap; /* Allows them to wrap to a new line on mobile */
+    gap: 12px; /* for spacing between pills */
+    align-items: center;
+}
+
+/* The "Popular:" text style */
+.tag-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 5px;
+}
+
+/* Adjusting the pill size for this specific area */
+.quick-tags .vibe-pill-link {
+    font-size: 0.75rem; /* Slightly smaller than the table pills */
+    padding: 6px 14px;
+    background-color: #ede9fe; /* Very light purple */
+    border: 1px solid transparent;
+}
+
+.quick-tags .vibe-pill-link:hover {
+    background-color: #ede9fe; /* Turns purple on hover */
+    border-color: #7c3aed;
+    color: #7c3aed;
+}
+
 
 /* MAIN WRAPPER */
 .vibe-wrapper {
@@ -239,6 +274,172 @@ body {
     height: 400px;
     width: 100%;
     background: linear-gradient(to bottom, #ffffff, #4c1d95);
+}
+
+/* === START OF TABLE CSS === */
+
+/* 1. Main Guide Container */
+.project-guide-section {
+    width: 100%;
+    margin-top: 60px; /* Spacing below the images */
+    margin-bottom: 80px;
+    text-align: left; /* Aligns all content, including table */
+}
+
+/* 2. Guide Title Specifics */
+.main-guide-title {
+    text-align: left; /* Overrides central alignment */
+    margin-bottom: 25px;
+    font-size: clamp(1.5rem, 5vw, 2.8rem); /* Adjusts if needed */
+}
+
+/* 3. Guide Paragraph Specifics */
+.vibe-p-stacked {
+    color: #4b5563; /* Subtle text color */
+    font-size: 1.25rem;
+    line-height: 1.8;
+    max-width: 900px; /* Limits width for readability */
+    margin-bottom: 50px;
+}
+
+/* Inline purple links from image */
+.vibe-inline-link {
+    color: #7c3aed; /* Uses your existing purple */
+    text-decoration: none;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+}
+.vibe-inline-link:hover { border-bottom-color: #7c3aed; }
+
+/* 4. The Table Card Container (Adds the rounded, shaded box) */
+.table-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    overflow: hidden; /* Fixes rounded corners on contents */
+    width: 100%;
+    padding: 10px; /* Inner padding like reference image */
+}
+
+/* 5. The Guide Table Itself */
+.vibe-guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+/* Header Styling (Light background, bold, grey text) */
+.vibe-guide-table thead {
+    background-color: #f8fafc;
+}
+
+.vibe-guide-table th {
+    text-align: left;
+    color: #64748b;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 20px 25px;
+}
+
+/* Cell Styling (Centered rows, padding) */
+.vibe-guide-table td {
+    padding: 18px 25px;
+    border-bottom: 1px solid #f1f5f9; /* Subtle divider */
+    color: #1a1a1a;
+}
+
+/* Removes bottom line from last row */
+.vibe-guide-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Column Widths (Matches reference image balance) */
+.col-step { width: 10%; }
+.col-task { width: 45%; }
+.col-time { width: 15%; }
+.col-learn { width: 30%; }
+
+/* Column Colors and Alignment fixes */
+.vibe-guide-table td:nth-child(1) { color: #7c3aed; font-weight: 700; } /* Purple Numbers */
+.vibe-guide-table td:nth-child(3) { color: #64748b; } /* Grey Time text */
+
+/* 1. Adjust the pill to make room for the arrow */
+.vibe-pill-link {
+    display: inline-flex; /* Changed to flex to align text and arrow */
+    align-items: center;
+    white-space: nowrap; /* Prevents text from breaking */
+    gap: 10px; /* Space between the word and the arrow */
+    background-color: #f5f3ff;
+    color: #7c3aed;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 8px 16px; /* Adjusted padding */
+    border-radius: 50px;
+    transition: all 0.2s ease;
+}
+
+/* 2. Inject the arrow using a pseudo-element */
+.vibe-pill-link::after {
+    content: '➔';
+    display: inline-block;
+    /* If the gap isn't enough, this forces an extra 4px of air */
+    margin-left: 4px; 
+    font-size: 1rem;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 3. The "Vibe" Animation: Move the arrow on hover */
+.vibe-pill-link:hover {
+     background-color: #f5f3ff;
+    color: #7c3aed;
+    transform: translateY(-2px);
+}
+
+.vibe-pill-link:hover::after {
+    transform: translateX(4px); /* Arrow nudges right when you hover the pill */
+}
+/* === END OF TABLE CSS === */
+
+/* Container to align H2 and Pill */
+.title-with-pill {
+    display: flex;
+    align-items: center; /* Vertical centering */
+    gap: 15px;           /* Space between text and pill */
+    margin-bottom: 12px;
+}
+
+/* Update the alignment to push the pill to the right margin */
+.title-with-pill {
+    display: flex;
+    align-items: center; 
+    width: 100%; /* Ensures it spans the full width of the text block */
+    margin-bottom: 15px;
+}
+
+/* Ensure the pill looks and feels clickable */
+.vibe-pill-link {
+    display: inline-block;
+    background-color: #f5f3ff;
+    color: #7c3aed;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 8px 18px;
+    border-radius: 50px;
+    cursor: pointer; /* Change cursor to pointer */
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+/* Add a hover state for these interactive pills */
+.vibe-pill-link:hover {
+    background-color: #ede9fe;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(124, 58, 237, 0.15);
+    border-color: rgba(124, 58, 237, 0.3);
 }
 
 /* RESPONSIVE */
