@@ -392,8 +392,10 @@ body {
     color: #4b5563; /* Subtle text color */
     font-size: 1.25rem;
     line-height: 1.8;
-    max-width: 900px; /* Limits width for readability */
-    margin-bottom: 50px;
+    max-width: 100%; /* Limits width for readability */
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: left; /* Aligns with the title and table */;
 }
 
 /* Inline purple links from image */
